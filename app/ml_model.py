@@ -13,3 +13,10 @@ class PricePredictor:
         self.model = LinearRegression()
         self.scaler = StandardScaler()
         self.is_trained = False
+        
+    def train(self, X: np.ndarray, y: np.ndarray):
+        """Обучение модели."""
+        X_scaled = self.scaler.fit_transform(X)
+        self.model.fit(X_scaled, y)
+        self.is_trained = True
+        
